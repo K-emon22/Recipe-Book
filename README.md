@@ -18,7 +18,7 @@ Welcome to **Emon's Recipe Book** — a full-stack recipe management web applica
 ---
 
 ## ✨ Features
-
+ 
 - 🔐 **Authentication**
   - Email/password and Google-based login.
   - Password validation .
