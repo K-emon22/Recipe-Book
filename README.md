@@ -1,4 +1,4 @@
-# 🍲 Emon's Recipe Book
+# 🍲Recipe Book
 
 Welcome to **Emon's Recipe Book** — a full-stack recipe management web application built with the **MERN stack**. Users can browse, like, add, update, and delete recipes. This project includes secure authentication, protected routes, filtering options, and a fully responsive UI.
 
