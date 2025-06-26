@@ -8,8 +8,6 @@ const SortedSix = () => {
   const [six, setSix] = useState([]);
   const {loding, user} = useContext(AuthContext);
 
-
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,18 +59,18 @@ const SortedSix = () => {
   }
 
   return (
-    <div>
+    <div className=" mx-[2%] lg:mx-[5%]">
       <Fade duration={800} delay={100} triggerOnce={false}>
         <h1 className="font-bold my-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           Our Top Recipes
         </h1>
       </Fade>
 
-      <div className=" grid sm:grid-cols-2 md:grid-cols-3 gap-5 ">
+      <div className=" grid sm:grid-cols-2 md:grid-cols-4 gap-5 ">
         {six.map((single) => (
           <div key={single._id}>
             {loding ? (
-              <div className="flex w-52 flex-col gap-4 mx-auto">
+              <div className="flex w-52 flex-col gap-4 mx-auto ">
                 <div className="skeleton h-32 w-full"></div>
                 <div className="skeleton h-4 w-28"></div>
                 <div className="skeleton h-4 w-full"></div>
@@ -90,8 +88,8 @@ const SortedSix = () => {
                 </h1>
                 <h1 className="font-semibold">
                   {" "}
-                  <span className="text-black/50">Cuisine Type:</span>{" "}
-                  {single.cuisine}
+                  <span className="text-black/50 ">Cuisine Type:</span>{" "}
+                  <span className="font-normal">{single.cuisine}</span>
                 </h1>
 
                 <div className="flex flex-row justify-between">
@@ -100,7 +98,7 @@ const SortedSix = () => {
                       single.category.map((item, index) => (
                         <span
                           key={index}
-                          className="mr-1 mb-1  bg-gray-500 rounded-lg px-1  py-1  text-sm inline-block"
+                          className="mr-1 mb-1 bg-[#570df8]/30 border-2 border-[#570df8] text-white rounded-lg px-1  py-1  text-sm inline-block"
                         >
                           {item}
                         </span>
@@ -118,10 +116,13 @@ const SortedSix = () => {
                     >
                       <BiSolidLike className="text-blue-600" size={20} />
                     </span>
-                    <span className="font-bold my-auto">{single.likeCount}</span>
+                    <span className="font-bold my-auto">
+                      {single.likeCount}
+                    </span>
                   </h1>
                 </div>
-                <Link to={`/recipeDetails/${single._id}`}>
+                <h2 className="line-clamp-2"> {single.instructions}</h2>
+                <Link to={`/recipeDetails/${single._id}`} className="mt-auto">
                   {" "}
                   <button className="btn btn-primary w-full mt-auto">
                     {" "}

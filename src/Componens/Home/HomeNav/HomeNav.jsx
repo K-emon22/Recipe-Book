@@ -4,7 +4,6 @@ import {Link, NavLink, useNavigate} from "react-router";
 import {AuthContext} from "../../ContexFile/Context";
 import {RxCross2} from "react-icons/rx";
 
-
 import {GoSun} from "react-icons/go";
 import {WiMoonAltWaningCrescent5} from "react-icons/wi";
 const HomeNav = () => {
@@ -34,8 +33,12 @@ const HomeNav = () => {
 
   return (
     <div>
-      <div className="sticky top-0 z-50 ">
-        <nav className=" flex flex-row justify-between  p-1 rounded-b-lg ">
+      <div
+        className={`sticky top-0 z-50 px-[2%] lg:px-[5%] bg-[#570df8]/30 ${
+          theme === "light" ? "text-black" : "text-white "
+        } backdrop-blur-md`}
+      >
+        <nav className=" flex flex-row justify-between  p-1 rounded-b-lg  ">
           <div className="flex flex-row my-auto">
             <img
               className="aspect-[4/3] w-[50px] sm:w-[70px] rounded-lg mr-3"
@@ -59,7 +62,7 @@ const HomeNav = () => {
                 className={({isActive}) =>
                   `${
                     isActive
-                      ? "bg-green-400 p-1 rounded-lg text-center "
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
                       : "p-1"
                   }`
                 }
@@ -72,7 +75,7 @@ const HomeNav = () => {
                 className={({isActive}) =>
                   `${
                     isActive
-                      ? "bg-green-400 p-1 rounded-lg text-center "
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
                       : "p-1"
                   }`
                 }
@@ -81,31 +84,49 @@ const HomeNav = () => {
                 All Recipes
               </NavLink>
 
-              <NavLink
-                className={({isActive}) =>
-                  `${
-                    isActive
-                      ? "bg-green-400 p-1 rounded-lg text-center "
-                      : "p-1"
-                  }`
-                }
-                to={"/addrecipe"}
-              >
-                Add Recipe
-              </NavLink>
+              {user && (
+                <NavLink
+                  className={({isActive}) =>
+                    `${
+                      isActive
+                        ? "bg-green-400 p-1 rounded-lg text-center "
+                        : "p-1"
+                    }`
+                  }
+                  to={"/addrecipe"}
+                >
+                  Add Recipe
+                </NavLink>
+              )}
+
+              {user && (
+                <NavLink
+                  className={({isActive}) =>
+                    `${
+                      isActive
+                        ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                        : "p-1"
+                    }`
+                  }
+                  to={"/myrecipe"}
+                >
+                  {" "}
+                  My Recipes
+                </NavLink>
+              )}
 
               <NavLink
                 className={({isActive}) =>
                   `${
                     isActive
-                      ? "bg-green-400 p-1 rounded-lg text-center "
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
                       : "p-1"
                   }`
                 }
-                to={"/myrecipe"}
+                to={"/aboutus"}
               >
                 {" "}
-                My Recipes
+                About Us
               </NavLink>
             </ul>
           </div>
@@ -113,7 +134,7 @@ const HomeNav = () => {
           <div className="my-auto hidden md:block">
             <span onClick={toggleTheme}>
               {theme == "light" ? (
-                <GoSun size={30} className="text-yellow-500 rounded-full" />
+                <GoSun size={30} className="text-black rounded-full" />
               ) : (
                 <WiMoonAltWaningCrescent5
                   size={30}
@@ -214,32 +235,33 @@ const HomeNav = () => {
                   </div>
                 </div>
 
-                <NavLink
-                  className={({isActive}) =>
-                    `${
-                      isActive
-                        ? "bg-green-400 p-1 rounded-lg text-center "
-                        : "p-1"
-                    }`
-                  }
-                  to={"/"}
-                >
-                  Home
-                </NavLink>
+                 <NavLink
+                className={({isActive}) =>
+                  `${
+                    isActive
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                      : "p-1"
+                  }`
+                }
+                to={"/"}
+              >
+                Home
+              </NavLink>
 
-                <NavLink
-                  className={({isActive}) =>
-                    `${
-                      isActive
-                        ? "bg-green-400 p-1 rounded-lg text-center "
-                        : "p-1"
-                    }`
-                  }
-                  to={"/allrecipe"}
-                >
-                  All Recipes
-                </NavLink>
+              <NavLink
+                className={({isActive}) =>
+                  `${
+                    isActive
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                      : "p-1"
+                  }`
+                }
+                to={"/allrecipe"}
+              >
+                All Recipes
+              </NavLink>
 
+              {user && (
                 <NavLink
                   className={({isActive}) =>
                     `${
@@ -252,12 +274,14 @@ const HomeNav = () => {
                 >
                   Add Recipe
                 </NavLink>
+              )}
 
+              {user && (
                 <NavLink
                   className={({isActive}) =>
                     `${
                       isActive
-                        ? "bg-green-400 p-1 rounded-lg text-center "
+                        ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
                         : "p-1"
                     }`
                   }
@@ -266,6 +290,21 @@ const HomeNav = () => {
                   {" "}
                   My Recipes
                 </NavLink>
+              )}
+
+              <NavLink
+                className={({isActive}) =>
+                  `${
+                    isActive
+                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                      : "p-1"
+                  }`
+                }
+                to={"/aboutus"}
+              >
+                {" "}
+                About Us
+              </NavLink>
 
                 {user ? (
                   ""

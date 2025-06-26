@@ -9,8 +9,6 @@ import {FiPlay} from "react-icons/fi";
 import {IoPause} from "react-icons/io5";
 import {AuthContext} from "../ContexFile/Context";
 export const Slider = () => {
-  
-
   const {user, loding} = useContext(AuthContext);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({loop: true}, [
@@ -82,13 +80,13 @@ export const Slider = () => {
   ];
 
   return (
-    <div className="w-full mx-auto  relative">
+    <div className="w-full   relative">
       <div className="overflow-hidden  " ref={emblaRef}>
         <div className="flex ">
           {slides.map((slide, index) => (
             <div key={index} className="flex-none w-full ">
               <div
-                className="h-56 mx-2 sm:h-64 md:h-80 lg:h-96 bg-cover bg-center rounded-lg flex items-center justify-center relative shadow-xl border-2 "
+                className="h-56  sm:h-64 md:h-92 lg:h-120 bg-cover bg-center  flex items-center justify-center relative shadow-xl border-2 "
                 style={{backgroundImage: `url(${slide.image})`}}
               >
                 <div className="bg-black/15   shadow-2xl  p-2 sm:p-6 rounded-lg text-center w-3/4 space-y-2 sm:py-10 lg:py-20 sm:space-y-4">

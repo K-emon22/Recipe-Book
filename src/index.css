@@ -1,26 +1,15 @@
 [data-theme="light"] h1,
 [data-theme="light"] span,
-[data-theme="light"] li,
-[data-theme="light"] nav {
+[data-theme="light"] li {
   color: #000000;
 }
 
 [data-theme="dark"] h1,
 [data-theme="dark"] span,
-[data-theme="dark"] li,
-[data-theme="dark"] nav {
+[data-theme="dark"] li {
   color: #ffffff;
 }
 
-[data-theme="light"] nav {
-  background-color: white;
-  color: black;
-}
-
-[data-theme="dark"] nav {
-  background-color: #111827;
-  color: white;
-}
 button,
 .btn {
   cursor: pointer;

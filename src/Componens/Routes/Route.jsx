@@ -9,6 +9,8 @@ import MyRecipe from "../MyRecipe/MyRecipe";
 import Error from "../ErrorPage/Error";
 import SingleRecipeDetails from "../SingleRecipeDetails/SingleRecipeDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AboutUs from "../AboutUs/AboutUs";
+
 
 export const Route = createBrowserRouter([
   {
@@ -60,8 +62,10 @@ export const Route = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {path: "/aboutus", element: <AboutUs></AboutUs>},
     ],
   },
+
   {
     path: "/*",
     element: <Error></Error>,

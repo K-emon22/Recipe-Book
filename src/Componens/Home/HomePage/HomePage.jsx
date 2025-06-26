@@ -4,8 +4,9 @@ import SortedSix from "../SortedSix/SortedSix";
 import Review from "../../ReviewSection/Review";
 import QnaSection from "../../QnASection/QnaSection";
 import Loding from "../../Loding/Loding";
-import {Typewriter} from "react-simple-typewriter";
-import {Fade} from "react-awesome-reveal";
+
+// import {Typewriter} from "react-simple-typewriter";
+// import {Fade} from "react-awesome-reveal";
 const HomePage = () => {
   window.scroll({
     top: 0,
@@ -24,7 +25,7 @@ const HomePage = () => {
   if (loading) return <Loding />;
   return (
     <div>
-      <Fade>
+      {/* <Fade>
         {" "}
         <div className="text-5xl my-10 flex justify-center items-center font-bold text-red-500">
           <Typewriter
@@ -37,7 +38,7 @@ const HomePage = () => {
             delaySpeed={1000}
           />
         </div>
-      </Fade>
+      </Fade> */}
 
       <div className="mt-10">
         <Slider></Slider>
@@ -48,9 +49,10 @@ const HomePage = () => {
       <div className="mt-10">
         <Review></Review>
       </div>
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <QnaSection></QnaSection>
-      </div>
+      </div> */}
+
     </div>
   );
 };

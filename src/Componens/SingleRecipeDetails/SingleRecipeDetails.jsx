@@ -61,7 +61,7 @@ const SingleRecipeDetails = () => {
           <div className="font-bold text-blue-600">{count}</div> people
           interested in this recipe.{" "}
         </div>
-        <div className="flex flex-col gap-3 p-5  border rounded-lg w-full sm:w-3/4 mt-10 md:w-2/3 justify-center items-center">
+        <div className="flex flex-col gap-3 py-5 px-2  border rounded-lg w-full sm:w-3/4 mt-10 md:w-2/3 justify-center items-center">
           <img
             className=" aspect-[4/2]  w-full rounded-lg mx-auto "
             src={single.image}
@@ -73,7 +73,10 @@ const SingleRecipeDetails = () => {
             </h1>{" "}
             <h1 className="font-semibold my-auto">
               Cuisine Type :
-              <span className="text-black/50 "> {single.cuisineType}</span>
+              <span className="text-black/50 font-normal">
+                {" "}
+                {single.cuisineType}
+              </span>
             </h1>
           </div>
 
@@ -81,12 +84,15 @@ const SingleRecipeDetails = () => {
             <h1 className="font-semibold my-auto">
               {" "}
               Category :
-              <span className="text-black/50"> {single.category}</span>
+              <span className="text-black/50 font-normal">
+                {" "}
+                {single.category}
+              </span>
             </h1>
             <h1 className="font-semibold">
               {" "}
               Preparation Time :
-              <span className=" text-black/50">
+              <span className=" text-black/50 font-normal">
                 {" "}
                 {single.preparationTime} Minutes
               </span>
@@ -96,24 +102,27 @@ const SingleRecipeDetails = () => {
           <p className="font-semibold">
             {" "}
             Ingredients :
-            <span className="text-black/50"> {single.ingredients}</span>
+            <span className="text-black/50 font-normal">
+              {" "}
+              {single.ingredients}
+            </span>
           </p>
-          <p>
-            <span className="font-semibold"> instructions :</span>
+          <p className="text-justify">
+            <span className="font-semibold "> instructions :</span>
             <span className="text-black "> {single.instructions}</span>
           </p>
-          <h1 className="flex flex-row gap-2">
-            <span
-              onClick={() => handleLike(single.email)}
-              className="my-auto cursor-pointer"
-            >
-              <BiSolidLike className="text-blue-600" size={20} />
+          <div
+            onClick={() => handleLike(single.email)}
+            className="flex btn w-full btn-primary text-white font-bold text-lg flex-row gap-2"
+          >
+            <span className="my-auto cursor-pointer">
+              <BiSolidLike className="text-white" size={20} />
             </span>
-            <span className="font-bold">
+            <h2 className="font-bold text-lg text-white">
               {" "}
               {single?.email == user?.email ? 0 : count}
-            </span>
-          </h1>
+            </h2>
+          </div>
         </div>
       </div>
     </div>

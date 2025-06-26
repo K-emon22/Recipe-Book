@@ -202,7 +202,7 @@ const AddRecipe = () => {
 
           <button
             type="submit"
-            className="p-2 font-semibold bg-blue-500 text-white rounded-full w-full"
+            className="p-2 font-semibold bg-[#570df8] text-white rounded-full w-full"
           >
             Add Recipe
           </button>
