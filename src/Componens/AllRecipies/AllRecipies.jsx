@@ -1054,7 +1054,7 @@ const AllRecipies = () => {
                             key={idx}
                             className="bg-[#570df8]/20 border-[#570df8] border-2 text-indigo-800 text-xs px-2 py-1 rounded-lg "
                           >
-                            {item}
+                            {item} 
                           </span>
                         ))
                       ) : (
