@@ -46,18 +46,18 @@ const HomeNav = () => {
               alt=""
             />
 
-            <h1 className="font-bold text-xl sm:text-3xl my-auto  xl:text-5xl hidden md:block">
+            <h1 className="font-bold text-xl sm:text-2xl my-auto  xl:text-5xl hidden md:block">
               Recipe Book
             </h1>
           </div>
           <div className="block md:hidden my-auto">
-            <h1 className="font-bold text-xl sm:text-3xl my-auto ">
+            <h1 className="font-bold text-xl sm:text-2xl my-auto ">
               Recipe Book
             </h1>
           </div>
 
-          <div className="hidden md:block my-auto">
-            <ul className="flex flex-row gap-3 font-semibold">
+          <div className="hidden lg:block my-auto">
+            <ul className="flex flex-row  gap-3 font-semibold  ">
               <NavLink
                 className={({isActive}) =>
                   `${
@@ -89,7 +89,7 @@ const HomeNav = () => {
                   className={({isActive}) =>
                     `${
                       isActive
-                        ? "bg-green-400 p-1 rounded-lg text-center "
+                        ? "bg-[#570df8] text-white p-1 rounded-lg text-center "
                         : "p-1"
                     }`
                   }
@@ -115,6 +115,21 @@ const HomeNav = () => {
                 </NavLink>
               )}
 
+              {user && (
+                <NavLink
+                  className={({isActive}) =>
+                    `${
+                      isActive
+                        ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                        : "p-1"
+                    }`
+                  }
+                  to={"/dashboard"}
+                >
+                  Dashboard
+                </NavLink>
+              )}
+
               <NavLink
                 className={({isActive}) =>
                   `${
@@ -131,20 +146,19 @@ const HomeNav = () => {
             </ul>
           </div>
 
-          <div className="my-auto hidden md:block">
-            <span onClick={toggleTheme}>
-              {theme == "light" ? (
-                <GoSun size={30} className="text-black rounded-full" />
-              ) : (
-                <WiMoonAltWaningCrescent5
-                  size={30}
-                  className="  rounded-full"
-                />
-              )}
-            </span>
-          </div>
-
           <div className="flex flex-row gap-2 md:gap-0 ">
+            <div className="my-auto hidden md:block mr-2">
+              <span onClick={toggleTheme}>
+                {theme == "light" ? (
+                  <GoSun size={30} className="text-black rounded-full" />
+                ) : (
+                  <WiMoonAltWaningCrescent5
+                    size={30}
+                    className="  rounded-full"
+                  />
+                )}
+              </span>
+            </div>
             {loding ? (
               <span className="loading loading-ring   w-[50px]"></span>
             ) : (
@@ -190,13 +204,6 @@ const HomeNav = () => {
                         Login{" "}
                       </button>
                     </Link>
-
-                    <Link className="my-auto" to={"/register"}>
-                      <button className="btn   btn-primary my-auto hidden md:block">
-                        {" "}
-                        Register
-                      </button>
-                    </Link>
                   </div>
                 )}
               </div>
@@ -208,7 +215,7 @@ const HomeNav = () => {
             >
               <div tabIndex={0} role="button" className=" ">
                 <div className="my-auto">
-                  <span className="block md:hidden my-auto cursor-pointer">
+                  <span className="block lg:hidden ml-5 my-auto cursor-pointer">
                     {menu ? <CgMenuRight size={30} /> : <RxCross2 size={30} />}
                   </span>
                 </div>
@@ -235,48 +242,6 @@ const HomeNav = () => {
                   </div>
                 </div>
 
-                 <NavLink
-                className={({isActive}) =>
-                  `${
-                    isActive
-                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
-                      : "p-1"
-                  }`
-                }
-                to={"/"}
-              >
-                Home
-              </NavLink>
-
-              <NavLink
-                className={({isActive}) =>
-                  `${
-                    isActive
-                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
-                      : "p-1"
-                  }`
-                }
-                to={"/allrecipe"}
-              >
-                All Recipes
-              </NavLink>
-
-              {user && (
-                <NavLink
-                  className={({isActive}) =>
-                    `${
-                      isActive
-                        ? "bg-green-400 p-1 rounded-lg text-center "
-                        : "p-1"
-                    }`
-                  }
-                  to={"/addrecipe"}
-                >
-                  Add Recipe
-                </NavLink>
-              )}
-
-              {user && (
                 <NavLink
                   className={({isActive}) =>
                     `${
@@ -285,26 +250,81 @@ const HomeNav = () => {
                         : "p-1"
                     }`
                   }
-                  to={"/myrecipe"}
+                  to={"/"}
+                >
+                  Home
+                </NavLink>
+
+                <NavLink
+                  className={({isActive}) =>
+                    `${
+                      isActive
+                        ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                        : "p-1"
+                    }`
+                  }
+                  to={"/allrecipe"}
+                >
+                  All Recipes
+                </NavLink>
+
+                {user && (
+                  <NavLink
+                    className={({isActive}) =>
+                      `${
+                        isActive
+                          ? "bg-green-400 p-1 rounded-lg text-center "
+                          : "p-1"
+                      }`
+                    }
+                    to={"/addrecipe"}
+                  >
+                    Add Recipe
+                  </NavLink>
+                )}
+
+                {user && (
+                  <NavLink
+                    className={({isActive}) =>
+                      `${
+                        isActive
+                          ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                          : "p-1"
+                      }`
+                    }
+                    to={"/myrecipe"}
+                  >
+                    {" "}
+                    My Recipes
+                  </NavLink>
+                )}
+                {user && (
+                  <NavLink
+                    className={({isActive}) =>
+                      `${
+                        isActive
+                          ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                          : "p-1"
+                      }`
+                    }
+                    to={"/dashboard"}
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
+                <NavLink
+                  className={({isActive}) =>
+                    `${
+                      isActive
+                        ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
+                        : "p-1"
+                    }`
+                  }
+                  to={"/aboutus"}
                 >
                   {" "}
-                  My Recipes
+                  About Us
                 </NavLink>
-              )}
-
-              <NavLink
-                className={({isActive}) =>
-                  `${
-                    isActive
-                      ? "bg-[#570df8] p-1 rounded-lg text-center  text-white"
-                      : "p-1"
-                  }`
-                }
-                to={"/aboutus"}
-              >
-                {" "}
-                About Us
-              </NavLink>
 
                 {user ? (
                   ""
@@ -314,13 +334,6 @@ const HomeNav = () => {
                       <button className="btn   btn-primary my-auto md:hidden ">
                         {" "}
                         Login{" "}
-                      </button>
-                    </Link>
-
-                    <Link className="my-auto" to={"/register"}>
-                      <button className="btn   btn-primary my-auto  md:hidden ">
-                        {" "}
-                        Register
                       </button>
                     </Link>
                   </div>

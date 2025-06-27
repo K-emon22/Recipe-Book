@@ -3,7 +3,7 @@ import React, {useContext} from "react";
 import {Link} from "react-router";
 import {AuthContext} from "../ContexFile/Context";
 import Loding from "../Loding/Loding";
-import HomeNav from "../Home/HomeNav/HomeNav";
+
 
 const Error = () => {
   window.scroll({
@@ -18,8 +18,8 @@ const Error = () => {
   }
 
   return (
-    <div className="mx-[5%]">
-      <div className="h-screen px-[5%]">
+    <div className=" mx-[2%] lg:mx-[5%]">
+      <div className="h-screen ">
         <div className="text-center mt-10 ">
           <img
             className=" w-full rounded-lg  m-auto aspect-[3/1] border-10 border-red-600 "

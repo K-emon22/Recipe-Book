@@ -85,7 +85,7 @@ const AddRecipe = () => {
   }
 
   return (
-    <div>
+    <div className=" mx-[2%] lg:mx-[5%]">
       <Fade duration={800} delay={100} triggerOnce={false}>
         <h1 className="font-bold my-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           Add Recipies

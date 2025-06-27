@@ -59,14 +59,14 @@ const SortedSix = () => {
   }
 
   return (
-    <div className=" mx-[2%] lg:mx-[5%]">
+    <div className=" ">
       <Fade duration={800} delay={100} triggerOnce={false}>
-        <h1 className="font-bold my-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="font-bold mb-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           Our Top Recipes
         </h1>
       </Fade>
 
-      <div className=" grid sm:grid-cols-2 md:grid-cols-4 gap-5 ">
+      <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
         {six.map((single) => (
           <div key={single._id}>
             {loding ? (

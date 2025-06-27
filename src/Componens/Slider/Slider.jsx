@@ -86,7 +86,7 @@ export const Slider = () => {
           {slides.map((slide, index) => (
             <div key={index} className="flex-none w-full ">
               <div
-                className="h-56  sm:h-64 md:h-92 lg:h-120 bg-cover bg-center  flex items-center justify-center relative shadow-xl border-2 "
+                className="h-56  sm:h-64 md:h-92 lg:h-112 bg-cover bg-center  flex items-center justify-center relative shadow-xl border-y-2 "
                 style={{backgroundImage: `url(${slide.image})`}}
               >
                 <div className="bg-black/15   shadow-2xl  p-2 sm:p-6 rounded-lg text-center w-3/4 space-y-2 sm:py-10 lg:py-20 sm:space-y-4">

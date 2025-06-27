@@ -10,7 +10,9 @@ import Error from "../ErrorPage/Error";
 import SingleRecipeDetails from "../SingleRecipeDetails/SingleRecipeDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AboutUs from "../AboutUs/AboutUs";
-
+import BlogDetails from "../Home/BlogDetails/BlogDetails";
+import Term from "../Footer/Term";
+import Dashboard from "../Dashboard/Dashboard";
 
 export const Route = createBrowserRouter([
   {
@@ -63,6 +65,22 @@ export const Route = createBrowserRouter([
         ),
       },
       {path: "/aboutus", element: <AboutUs></AboutUs>},
+      {
+        path: "/blog/:id",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/term",
+        element: <Term></Term>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 

@@ -49,8 +49,6 @@ const MyRecipe = () => {
   const handleUpdate = (id, category) => {
     console.log(id);
     setCat(category);
-
-
   };
 
   if (loading) {
@@ -58,7 +56,7 @@ const MyRecipe = () => {
   }
 
   return (
-    <div>
+    <div className=" mx-[2%] lg:mx-[5%]">
       <Fade duration={800} delay={100} triggerOnce={false}>
         <h1 className="font-bold my-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           Your Added Recipies
@@ -68,7 +66,7 @@ const MyRecipe = () => {
       <div className="">
         {myAdded.length === 0 ? (
           <div className="bg-black/30 py-10 rounded-lg flex flex-col items-center justify-center gap-5 mt-20 ">
-            <h1 className="font-bold text-center    text-2xl sm:text-3xl md:text-4xl lg:text-5xl ">
+            <h1 className="font-bold text-center    text-2xl  md:text-3xl ">
               You haven't added any recipes yet. <br /> Add some!
             </h1>
             <Link to={"/addrecipe"}>

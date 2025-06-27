@@ -13,7 +13,7 @@ const AboutUs = () => {
     return <Loding></Loding>;
   }
   return (
-    <div className=" mt-10">
+    <div className=" mt-10  mx-[2%] lg:mx-[5%]">
       <span className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white ">
         <div className="  mx-auto text-center w-full flex flex-col justify-center items-center space-y-6">
           <h2 className="text-4xl font-bold mb-4">About Recipe Book App</h2>
@@ -55,40 +55,6 @@ const AboutUs = () => {
               React | React Router | Firebase | MongoDB | Express.js | Tailwind
               CSS | DaisyUI | Lottie | Toastify
             </p>
-          </div>
-
-          <div className="mt-10 text-left">
-            <h3 className="text-2xl font-semibold mb-4">📱 Contact & Social</h3>
-            <div className="flex gap-6 justify-center text-2xl">
-              <a
-                href="mailto:yourmail@example.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaEnvelope className="hover:text-[#570df8]" />
-              </a>
-              <a
-                href="https://github.com/your-username"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="hover:text-[#570df8]" />
-              </a>
-              <a
-                href="https://facebook.com/your-profile"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook className="hover:text-[#570df8]" />
-              </a>
-              <a
-                href="https://linkedin.com/in/your-profile"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin className="hover:text-[#570df8]" />
-              </a>
-            </div>
           </div>
         </div>
       </span>
