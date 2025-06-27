@@ -11,6 +11,8 @@ import {NavLink} from "react-router";
 import {BsMenuButtonWideFill} from "react-icons/bs";
 import Footer from "../Footer/Footer";
 import Loding from "../Loding/Loding";
+import AllData from "./AllData";
+import AllMyrecipe from "./AllMyrecipe";
 const Dashboard = () => {
   const [lod, setLod] = useState(true);
   const {user} = useContext(AuthContext);
@@ -37,7 +39,6 @@ const Dashboard = () => {
       }
     );
   }, []);
-  console.log(category);
 
   const [allRec, setAllRec] = useState([]);
 
@@ -56,17 +57,48 @@ const Dashboard = () => {
   );
   console.log(userRecipe);
 
+  const dashboard = () => {
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("allrecipe").style.display = "none";
+    document.getElementById("allrec").style.background = "none";
+    document.getElementById("allrec").style.color = "white";
+    document.getElementById("myrecipes").style.display = "none";
+    document.getElementById("myrecipe").style.color = "white";
+    document.getElementById("myrecipe").style.background = "";
+  };
+
+  const allrecipes = () => {
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("allrecipe").style.display = "block";
+    const rec = document.getElementById("allrec");
+    rec.style.background = "white";
+    rec.style.color = "black";
+    document.getElementById("myrecipes").style.display = "none";
+    document.getElementById("myrecipe").style.color = "white";
+    document.getElementById("myrecipe").style.background = "";
+  };
+
+  const myRecipes = () => {
+    document.getElementById("myrecipes").style.display = "block";
+    document.getElementById("myrecipe").style.background = "white";
+    document.getElementById("myrecipe").style.color = "black";
+    document.getElementById("allrec").style.background = "none";
+    document.getElementById("allrecipe").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("allrec").style.color = "white";
+  };
+
   if (lod) {
     return <Loding></Loding>;
   }
   return (
-    <div className="min-h-screen pt-5">
+    <div className="pt-5">
       <div className="w-full flex justify-center items-center px-[2%] lg:px-[5%]">
         <h2 className="px-6 py-2 rounded-lg w-full border-2 border-primary mb-5 text-center font-bold text-xl text-white bg-primary shadow-[0_4px_0_0_#3d0fc5] hover:shadow-[0_2px_0_0_#3d0fc5] active:translate-y-1 transition-all duration-200 dark:bg-[#570df8]/90 dark:text-white">
           DashBoard
         </h2>
       </div>
-      <div className="   rounded-lg text-gray-800 px-[2%] lg:px-[5%]">
+      <div className=" min-h-[calc(100vh-200px)]   rounded-lg text-gray-800 px-[2%] lg:px-[5%]">
         <div className=" mb-5 flex flex-row justify-between">
           <h1 className="text-3xl hidden lg:block font-bold ">
             Welcome in <span className="text-yellow-600">Recipe Book</span>
@@ -85,7 +117,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-4  gap-2 ">
+        <div className="grid lg:grid-cols-4 border-2 p-5 rounded-lg gap-2 ">
           <div className="hidden lg:block mt-1.5  rounded-lg ">
             <ul className="menu p-4  text-white min-h-full rounded-lg w-full bg-[#570df8]/90 font-semibold space-y-2 shadow-lg border-2 border-gray-400">
               {/* Nav Links */}
@@ -102,18 +134,41 @@ const Dashboard = () => {
                 Home
               </NavLink>
 
-              <NavLink
-                to="/allrecipe"
-                className={({isActive}) =>
-                  `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? "bg-primary text-white font-semibold shadow"
-                      : "hover:bg-primary/10"
-                  }`
-                }
-              >
-                All Recipes
-              </NavLink>
+              <div className="flex flex-col  gap-2 border-2 rounded-lg border-gray-400 p-1">
+                {user && (
+                  <NavLink
+                    onClick={dashboard}
+                    to="/dashboard"
+                    className={({isActive}) =>
+                      `block px-4 py-2 rounded-lg  duration-200 font-semibold hover:scale-105 transition-transform ${
+                        isActive
+                          ? "bg-violet-300 text-black shadow-[0_4px_0_0_#6d28d9] active:translate-y-[1px]"
+                          : ""
+                      }`
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
+
+                <h2
+                  id="allrec"
+                  onClick={allrecipes}
+                  className=" px-4 py-2 cursor-pointer rounded-lg text-white  "
+                >
+                  {" "}
+                  All Recipes
+                </h2>
+
+                <h2
+                  id="myrecipe"
+                  onClick={myRecipes}
+                  className=" px-4 py-2 cursor-pointer rounded-lg text-white  "
+                >
+                  {" "}
+                  My Recipe
+                </h2>
+              </div>
 
               {user && (
                 <NavLink
@@ -129,53 +184,10 @@ const Dashboard = () => {
                   Add Recipe
                 </NavLink>
               )}
-
-              {user && (
-                <NavLink
-                  to="/myrecipe"
-                  className={({isActive}) =>
-                    `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? "bg-primary text-white font-semibold shadow"
-                        : "hover:bg-primary/10"
-                    }`
-                  }
-                >
-                  My Recipes
-                </NavLink>
-              )}
-
-              {user && (
-                <NavLink
-                  to="/dashboard"
-                  className={({isActive}) =>
-                    `block px-4 py-2 rounded-lg  duration-200 font-semibold hover:scale-105 transition-transform ${
-                      isActive
-                        ? "bg-violet-300 text-black shadow-[0_4px_0_0_#6d28d9] active:translate-y-[1px]"
-                        : ""
-                    }`
-                  }
-                >
-                  Dashboard
-                </NavLink>
-              )}
-
-              <NavLink
-                to="/aboutus"
-                className={({isActive}) =>
-                  `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? "bg-primary text-white font-semibold shadow"
-                      : "hover:bg-primary/10"
-                  }`
-                }
-              >
-                About Us
-              </NavLink>
             </ul>
           </div>
 
-          <div className="col-span-3 p-1.5 my-auto">
+          <div className="col-span-3 p-1.5 ">
             {" "}
             <div className="flex flex-row justify-between w-full mb-10 lg:mb-0">
               <div className="my-auto ">
@@ -219,17 +231,17 @@ const Dashboard = () => {
                   </div>
 
                   {/* Drawer Side Panel */}
-                  <div className="drawer-side mt-[69px] ">
+                  <div className="drawer-side pt-[75px] backdrop-blur-sm  ">
                     <label
                       htmlFor="my-drawer"
                       className="drawer-overlay"
                     ></label>
-                    <ul className="menu p-4 w-2/3 sm:w-1/2 md:w-1/4 min-h-full bg-base-100  text-base-content space-y-2 shadow-lg border-2 border-gray-400">
+                    <ul className="menu p-4 w-2/3 sm:w-1/2 md:w-1/4 min-h-full bg-gray-300/70 font-semibold border-black border-2 rounded-l-lg text-white space-y-2 shadow-lg ">
                       {/* Nav Links */}
                       <NavLink
                         to="/"
                         className={({isActive}) =>
-                          `block px-4 py-2 rounded-lg transition-all duration-200 ${
+                          `block px-4 py-2 rounded-lg border-2 transition-all duration-200 ${
                             isActive
                               ? "bg-primary text-white font-semibold shadow"
                               : "hover:bg-primary/10"
@@ -239,24 +251,47 @@ const Dashboard = () => {
                         Home
                       </NavLink>
 
-                      <NavLink
-                        to="/allrecipe"
-                        className={({isActive}) =>
-                          `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                            isActive
-                              ? "bg-primary text-white font-semibold shadow"
-                              : "hover:bg-primary/10"
-                          }`
-                        }
-                      >
-                        All Recipes
-                      </NavLink>
+                      <div className="flex flex-col  gap-2 border-2 rounded-lg border-white p-1">
+                        {user && (
+                          <NavLink
+                            onClick={dashboard}
+                            to="/dashboard"
+                            className={({isActive}) =>
+                              `block px-4 py-2 rounded-lg  duration-200 font-semibold hover:scale-105 transition-transform ${
+                                isActive
+                                  ? "bg-violet-300 text-black shadow-[0_4px_0_0_#6d28d9] active:translate-y-[1px]"
+                                  : ""
+                              }`
+                            }
+                          >
+                            Dashboard
+                          </NavLink>
+                        )}
+
+                        <h2
+                          id="allrec"
+                          onClick={allrecipes}
+                          className=" px-4 py-2 cursor-pointer rounded-lg text-white  "
+                        >
+                          {" "}
+                          All Recipes
+                        </h2>
+
+                        <h2
+                          id="myrecipe"
+                          onClick={myRecipes}
+                          className=" px-4 py-2 cursor-pointer rounded-lg text-white  "
+                        >
+                          {" "}
+                          My Recipe
+                        </h2>
+                      </div>
 
                       {user && (
                         <NavLink
                           to="/addrecipe"
                           className={({isActive}) =>
-                            `block px-4 py-2 rounded-lg transition-all duration-200 ${
+                            `block px-4 py-2 rounded-lg transition-all   border-2  duration-200 ${
                               isActive
                                 ? "bg-primary text-white font-semibold shadow"
                                 : "hover:bg-primary/10"
@@ -266,73 +301,46 @@ const Dashboard = () => {
                           Add Recipe
                         </NavLink>
                       )}
-
-                      {user && (
-                        <NavLink
-                          to="/myrecipe"
-                          className={({isActive}) =>
-                            `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                              isActive
-                                ? "bg-primary text-white font-semibold shadow"
-                                : "hover:bg-primary/10"
-                            }`
-                          }
-                        >
-                          My Recipes
-                        </NavLink>
-                      )}
-
-                      {user && (
-                        <NavLink
-                          to="/dashboard"
-                          className={({isActive}) =>
-                            `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                              isActive
-                                ? "bg-primary text-white font-semibold shadow"
-                                : "hover:bg-primary/10"
-                            }`
-                          }
-                        >
-                          Dashboard
-                        </NavLink>
-                      )}
-
-                      <NavLink
-                        to="/aboutus"
-                        className={({isActive}) =>
-                          `block px-4 py-2 rounded-lg transition-all duration-200 ${
-                            isActive
-                              ? "bg-primary text-white font-semibold shadow"
-                              : "hover:bg-primary/10"
-                          }`
-                        }
-                      >
-                        About Us
-                      </NavLink>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="max-w-6xl mx-auto">
+            <div
+              id="allrecipe"
+              className="hidden h-[500px] overflow-y-auto px-4"
+            >
+              <AllData category={category} />
+            </div>
+            <div id="myrecipes" className="hidden">
+              <AllMyrecipe category={category}></AllMyrecipe>
+            </div>
+            <div id="dashboard" className="max-w-6xl mx-auto">
               {/* Stats Row */}
               <div className="grid sm:grid-cols-4 gap-4 mb-6">
                 <div className=" border-2 border-gray-400  p-4 rounded-xl shadow text-center">
                   <h1 className="text-sm text-gray-500">Recipes</h1>
-                  <h1 className="text-xl  text-gray-500 font-bold"> {allRec.length}</h1>
+                  <h1 className="text-xl  text-gray-500 font-bold">
+                    {" "}
+                    {allRec.length}
+                  </h1>
                 </div>
                 <div className=" p-4 bg-[#570df8]/90 rounded-xl shadow text-center">
                   <p className="text-sm text-white">My Recipe</p>
-                  <h2 className="text-xl text-white font-bold">{userRecipe.length}</h2>
+                  <h2 className="text-xl text-white font-bold">
+                    {userRecipe.length}
+                  </h2>
                 </div>
                 <div className="border-gray-400  border-2 p-4 rounded-xl shadow text-center">
                   <h1 className="text-sm text-gray-500">My Recipe Upvotes</h1>
-                  <h1 className="text-xl text-gray-500 font-bold">{myTotalLikes}</h1>
+                  <h1 className="text-xl text-gray-500 font-bold">
+                    {myTotalLikes}
+                  </h1>
                 </div>
                 {user && (
-                  <div className="border-gray-400  border-2  p-4 rounded-xl shadow text-center">
-                    <h1 className="text-sm text-gray-500">Views</h1>
-                    <h1 className="text-xl  text-gray-500 font-bold">203</h1>
+                  <div className="border-gray-400 bg-[#570df8]/90 border-2  p-4 rounded-xl shadow text-center">
+                    <h3 className="text-sm text-white">Views</h3>
+                    <h3 className="text-xl  text-white font-bold">203</h3>
                   </div>
                 )}
               </div>
