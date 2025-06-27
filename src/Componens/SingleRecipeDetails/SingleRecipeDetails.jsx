@@ -3,21 +3,18 @@ import {useLoaderData} from "react-router";
 import {BiSolidLike} from "react-icons/bi";
 import {AuthContext} from "../ContexFile/Context";
 import Loding from "../Loding/Loding";
+
 const SingleRecipeDetails = () => {
   useEffect(() => {
-    window.scroll({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scroll({top: 0, behavior: "smooth"});
   }, []);
+
   const single = useLoaderData();
+  const {user} = useContext(AuthContext);
 
   const [count, setCount] = useState();
-
-  const {_id} = single;
-
   const [loading, setLoading] = useState(true);
-  const {user} = useContext(AuthContext);
+  const {_id} = single;
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,100 +29,89 @@ const SingleRecipeDetails = () => {
   }, [single]);
 
   const handleLike = (email) => {
-    if (email == user?.email) {
-      return;
-    }
+    if (email === user?.email) return;
+
     fetch(
       `https://hero-pro-assignment-10-server-site.vercel.app/recipes/${_id}`,
       {
         method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
+        headers: {"content-type": "application/json"},
       }
     )
       .then((res) => res.json())
-      .then(() => {
-        setCount(count + 1);
-      });
+      .then(() => setCount((prev) => prev + 1));
   };
 
-  if (loading) {
-    return <Loding></Loding>;
-  }
+  if (loading) return <Loding />;
+
   return (
-    <div className="flex justify-center items-center">
-      <div className="flex justify-center flex-col w-5/6 items-center ">
-        <div className="mt-8 font-semibold flex flex-row gap-2 ">
-          {" "}
-          <div className="font-bold text-blue-600">{count}</div> people
-          interested in this recipe.{" "}
+    <section className="flex justify-center items-center py-10 px-4">
+      <div className="w-full max-w-4xl  shadow-xl rounded-xl p-6 space-y-6">
+        <div className="text-center  text-sm font-semibold">
+          <span className="text-blue-600 font-bold">{count}</span> people are
+          interested in this recipe.
         </div>
-        <div className="flex flex-col gap-3 py-5 px-2  border rounded-lg w-full sm:w-3/4 mt-10 md:w-2/3 justify-center items-center">
-          <img
-            className=" aspect-[4/2]  w-full rounded-lg mx-auto "
-            src={single.image}
-            alt={single.title}
-          />
-          <div className=" flex flex-col sm:flex-row gap-5 justify-between">
-            <h1 className="font-bold text-2xl md:text-[18px] ">
-              {single.title}
-            </h1>{" "}
-            <h1 className="font-semibold my-auto">
-              Cuisine Type :
-              <span className="text-black/50 font-normal">
-                {" "}
-                {single.cuisineType}
-              </span>
-            </h1>
-          </div>
 
-          <div className="flex sm:flex-row flex-col gap-5 justify-center items-center">
-            <h1 className="font-semibold my-auto">
-              {" "}
-              Category :
-              <span className="text-black/50 font-normal">
-                {" "}
-                {single.category}
-              </span>
-            </h1>
-            <h1 className="font-semibold">
-              {" "}
-              Preparation Time :
-              <span className=" text-black/50 font-normal">
-                {" "}
-                {single.preparationTime} Minutes
-              </span>
-            </h1>
-          </div>
+        <img
+          src={single.image}
+          alt={single.title}
+          className="rounded-lg w-full object-cover aspect-[4/2]"
+        />
 
-          <p className="font-semibold">
-            {" "}
-            Ingredients :
-            <span className="text-black/50 font-normal">
-              {" "}
-              {single.ingredients}
+        <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
+          <h1 className="text-2xl font-bold text-gray-800">{single.title}</h1>
+          <span className="text-sm text-gray-700 font-semibold">
+            Cuisine:{" "}
+            <span className="text-gray-700 font-normal">
+              {single.cuisineType}
+            </span>
+          </span>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 text-sm  font-medium">
+          <p>
+            Category: <span className="text-gray-700">{single.category}</span>
+          </p>
+          <p>
+            Prep Time:{" "}
+            <span className="text-gray-700">
+              {single.preparationTime} minutes
             </span>
           </p>
-          <p className="text-justify">
-            <span className="font-semibold "> instructions :</span>
-            <span className="text-black "> {single.instructions}</span>
-          </p>
-          <div
-            onClick={() => handleLike(single.email)}
-            className="flex btn w-full btn-primary text-white font-bold text-lg flex-row gap-2"
-          >
-            <span className="my-auto cursor-pointer">
-              <BiSolidLike className="text-white" size={20} />
-            </span>
-            <h2 className="font-bold text-lg text-white">
-              {" "}
-              {single?.email == user?.email ? 0 : count}
-            </h2>
-          </div>
         </div>
+
+        <div>
+          <h1 className="font-semibold text-lg text-gray-800 mb-1">
+            Ingredients
+          </h1>
+          <p className=" text-sm">{single.ingredients}</p>
+        </div>
+
+        <div>
+          <h1 className="font-semibold text-lg text-gray-800 mb-1">
+            Instructions
+          </h1>
+          <p className=" text-sm text-justify leading-relaxed">
+            {single.instructions}
+          </p>
+        </div>
+
+        <button
+          onClick={() => handleLike(single.email)}
+          disabled={single?.email === user?.email}
+          className={`w-full flex items-center justify-center gap-2 px-4 py-2 text-white font-semibold rounded-lg transition ${
+            single?.email === user?.email
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-indigo-600 hover:bg-indigo-700"
+          }`}
+        >
+          <BiSolidLike size={20} />
+          {single?.email === user?.email
+            ? "You can't like your own recipe"
+            : `Like (${count})`}
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

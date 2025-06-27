@@ -106,36 +106,34 @@ const MyRecipe = () => {
                     </h1>
                   </div>
 
-                  <div className="flex sm:flex-row flex-col gap-5 justify-center items-center">
-                    <h1 className="font-semibold my-auto">
-                      {" "}
-                      Category :
-                      <span className="text-black/50">
-                        {Array.isArray(single.category) ? (
-                          single.category.map((item, index) => (
-                            <span
-                              key={index}
-                              className="mr-1 mb-1  bg-gray-400 rounded-lg px-1  py-1  text-sm inline-block"
-                            >
-                              {item}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="mr-1 py-1  text-sm bg-gray-400 rounded-lg px-1 inline-block">
-                            {single.category}
+                  <h1 className="font-semibold my-auto">
+                    {" "}
+                    Category:
+                    <span className="text-black/50">
+                      {Array.isArray(single.category) ? (
+                        single.category.map((item, index) => (
+                          <span
+                            key={index}
+                            className="mr-1 mb-1 bg-[#570df8]/30 border-2 border-[#570df8] rounded-lg px-1  py-1  text-sm "
+                          >
+                            {item}
                           </span>
-                        )}
-                      </span>
-                    </h1>
-                    <h1 className="font-semibold">
+                        ))
+                      ) : (
+                        <span className="mr-1 py-1  text-sm bg-gray-400 rounded-lg px-1 inline-block">
+                          {single.category}
+                        </span>
+                      )}
+                    </span>
+                  </h1>
+                  <h1 className="font-semibold">
+                    {" "}
+                    Preparation Time :
+                    <span className=" text-black/50">
                       {" "}
-                      Preparation Time :
-                      <span className=" text-black/50">
-                        {" "}
-                        {single.preparationTime} Minutes
-                      </span>
-                    </h1>
-                  </div>
+                      {single.preparationTime} Minutes
+                    </span>
+                  </h1>
 
                   <p className="font-semibold">
                     {" "}

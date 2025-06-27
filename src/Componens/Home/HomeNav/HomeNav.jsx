@@ -273,7 +273,7 @@ const HomeNav = () => {
                     className={({isActive}) =>
                       `${
                         isActive
-                          ? "bg-green-400 p-1 rounded-lg text-center "
+                          ? "bg-[#570df8] text-white p-1 rounded-lg text-center "
                           : "p-1"
                       }`
                     }

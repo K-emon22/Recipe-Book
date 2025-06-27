@@ -73,19 +73,19 @@ export const Route = createBrowserRouter([
         path: "/term",
         element: <Term></Term>,
       },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard></Dashboard>
-          </PrivateRoute>
-        ),
-      },
     ],
   },
 
   {
     path: "/*",
     element: <Error></Error>,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
   },
 ]);
